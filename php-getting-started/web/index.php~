@@ -1,0 +1,26 @@
+<?php
+session_start();
+
+
+$api_key = '589761721151521';
+$api_secret = '0737e8104e38f30fb25a5480e1b7a8cb';
+$redirect_login_url = 'https://www.google.com';
+
+$host = "ec2-54-83-5-151.compute-1.amazonaws.com"; 
+$user = "kzoljzqegutmck"; 
+$pass = "JjfqdaJufJeV7PX24bI9Z72aWv"; 
+$db = "db00k1jcqhh4a0"; 
+
+$con = pg_connect("host=$host dbname=$db user=$user password=$pass")
+    or die ("Could not connect to server\n"); 
+
+$query = "SELECT VERSION()"; 
+$rs = pg_query($con, $query) or die("Cannot execute query: $query\n"); 
+$row = pg_fetch_row($rs);
+
+echo $row[0] . "\n";
+
+?>
+
+// use this for testing only
+//unset($_SESSION['fb_token']);
